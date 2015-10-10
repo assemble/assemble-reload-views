@@ -7,9 +7,7 @@
 
 'use strict';
 
-var isRegex = require('is-regex');
-var merge = require('mixin-deep');
-var only = require('emitter-only');
+var utils = require('./utils');
 
 /**
  * reload view collections when plugins are loaded
@@ -19,7 +17,7 @@ var only = require('emitter-only');
 module.exports = function (pattern) {
   return function (app) {
     if (!this.only) {
-      this.mixin('only', only.bind(this));
+      this.mixin('only', utils.only.bind(this));
     }
 
     this.only('reloadViews', 'option', function (key) {
@@ -40,7 +38,7 @@ function reloadViews(app, key) {
       var views = app.views[name];
 
       if (!key || typeof app[name][key] !== 'function') {
-        app.create(name, merge({}, app[name].options, app.options));
+        app.create(name, utils.merge({}, app[name].options, app.options));
         app[name].addViews(views);
       }
     }
@@ -54,7 +52,7 @@ function isMatch(val) {
     };
   }
 
-  if (isRegex(val)) {
+  if (utils.isRegex(val)) {
     return function (key) {
       return val.test(key);
     };

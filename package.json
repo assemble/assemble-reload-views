@@ -11,7 +11,7 @@
   "license": "MIT",
   "files": [
     "index.js",
-    "utisl.js"
+    "utils.js"
   ],
   "main": "index.js",
   "engines": {

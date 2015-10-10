@@ -1,6 +1,6 @@
 # assemble-reload-views [![NPM version](https://badge.fury.io/js/assemble-reload-views.svg)](http://badge.fury.io/js/assemble-reload-views)
 
-> Assemble instance plugin that reloads views when another plugin is loaded or options are updated.
+> Assemble instance plugin that reloads views when options are updated or when another plugin is loaded.
 
 ## Install
 
